@@ -1,12 +1,12 @@
 # go-ovh-availabilities
 
 ## Summary
-**go-ovh-availability** is a cross-platform monitoring tool which aims to alert you from OVH dedicated new availabilities. You can be alerted by mail or simply from the terminal log output.
+**go-ovh-availabilities** is a cross-platform monitoring tool which aims to alert you from OVH dedicated new availabilities. You can be alerted by mail or simply from the terminal log output.
 
 
 ![screenshot.png](screenshot.png)
 
-```shell
+```
 $ go-ovh-availabilities -c /path/to/config.json
 2018/10/09 20:29:17 Configuration file : config.json
 2018/10/09 20:29:18 KS-3 1801sk14 is now : available (1H-low) in europe (gra) !
@@ -20,7 +20,7 @@ Mandatory :
 
 * Go (better with latest version)
 
-Optionnal : 
+Optional : 
 
 * SMTP server (for mail support)
 * Sendmail (for easier mail support) - [Linux-only]
@@ -37,10 +37,10 @@ $ go-ovh-availabilities -c /path/to/config.json
 ## Configuration
 
 - Refresh (mandatory) is the interval to wait before the next API request. (seconds)
-- Wanted.Name (optional) is but generally usefull.
+- Wanted.Name (optional)
 - Wanted.Hardware (mandatory) refer to the "id" of the dedicated server. You can get it from the Kimsufi or Souyoustart website by inspecting the source code.
 - Wanted.Region (optional) is the location of the server
-- Wanted.datacenters (optional) is usefull if you want a desired DC. Exemple: "rbx" for "Roubaix", "lon" for "London"...
+- Wanted.datacenters (optional) is useful if you want a desired DC. Example: "rbx" for "Roubaix"...
 
 ```json
 {
@@ -49,18 +49,13 @@ $ go-ovh-availabilities -c /path/to/config.json
   "wanted": [
     {
       "name": "My favorite KS-1",
-      "hardware": "1801sk12",
-      "region": "europe"
+      "hardware": "1801sk12"
     },
     {
-      "name": "backup storage (KS-2)",
+      "name": "Backup storage (KS-2)",
       "hardware": "1801sk13",
       "region": "europe",
-      "datacenters": []
-    },
-    {
-      "hardware": "1801sk23",
-      "region": "europe"
+      "datacenters": ["rbx", "lon"]
     },
     {
       "hardware": "1801sys011",
@@ -69,21 +64,17 @@ $ go-ovh-availabilities -c /path/to/config.json
     }
   ]
 }
-
 ```
 
 ## Mail Support
 
 
-### Sendmail (the ugly/easy way)
+### Sendmail
 
 Add to config.json :
 
 ```json
 {
-  "api": "https://www.ovh.com/engine/api/dedicated/server/availabilities?country=fr",
-  "refresh": 300,
-  
   "mail": {
     "from": "user@domain.tld",
     "to": "someone@exemple.com",
@@ -92,9 +83,7 @@ Add to config.json :
       "active": true,
       "bin": "/usr/sbin/sendmail"
     }
-  },
-  
-  "wanted": [...]
+  }
 }
 ```
 
@@ -104,9 +93,6 @@ Add to config.json :
 
 ```json
 {
-  "api": "https://www.ovh.com/engine/api/dedicated/server/availabilities?country=fr",
-  "refresh": 300,
-  
   "mail": {
     "from": "user@domain.tld",
     "to": "someone@exemple.com",
@@ -118,8 +104,6 @@ Add to config.json :
       "username": "",
       "password": ""
     }
-  },
-  
-  "wanted": [...]
+  }
 }
 ```
