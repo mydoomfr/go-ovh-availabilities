@@ -18,7 +18,7 @@ $ go-ovh-availabilities -c /path/to/config.json
 
 Mandatory :
 
-* Go (better with latest version)
+* Go >= 1.10
 
 Optional : 
 
@@ -37,9 +37,9 @@ $ go-ovh-availabilities -c /path/to/config.json
 ## Configuration
 
 - Refresh (mandatory) is the interval to wait before the next API request. (seconds)
-- Wanted.Name (optional)
-- Wanted.Hardware (mandatory) refer to the "id" of the dedicated server. You can get it from the Kimsufi or Souyoustart website by inspecting the source code.
-- Wanted.Region (optional) is the location of the server
+- Wanted.Name (optional) is your custom search name.
+- Wanted.Hardware (mandatory) is the "id" of the dedicated server. You can get it from the Kimsufi or Souyoustart website by inspecting the source code.
+- Wanted.Region (optional) refers to the geolocation.
 - Wanted.datacenters (optional) is useful if you want a desired DC. Example: "rbx" for "Roubaix"...
 
 ```json
@@ -68,8 +68,9 @@ $ go-ovh-availabilities -c /path/to/config.json
 
 ## Mail Support
 
+### Method #1 : Sendmail
 
-### Sendmail
+Linux-only. May work with OSX if you have sendmail.
 
 Add to config.json :
 
@@ -87,7 +88,7 @@ Add to config.json :
 }
 ```
 
-### SMTP Auth
+### Method #2 : SMTP Auth
 
 Add to config.json :
 
