@@ -42,6 +42,8 @@ $ go-ovh-availabilities -c /path/to/config.json
 - Wanted.Region (optional) refers to the geolocation.
 - Wanted.datacenters (optional) is useful if you want a desired DC. Example: "rbx" for "Roubaix"...
 
+### config.json 
+
 ```json
 {
   "api": "https://www.ovh.com/engine/api/dedicated/server/availabilities?country=fr",

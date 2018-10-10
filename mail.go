@@ -29,9 +29,13 @@ func NewRequest(to []string, subject string) *Request {
 }
 
 func (r *Request) parseTemplate(fileName string, data interface{}) error {
-	t, err := template.ParseFiles(fileName)
+	m, err := Asset(fileName)
 	if err != nil {
-		return err
+		log.Fatalf("unable to get asset: %v", err)
+	}
+	t, err := template.New("mail").Parse(string(m))
+	if err != nil {
+		log.Fatalf("unable to parse the template_mail.html file: %v", err)
 	}
 	buffer := new(bytes.Buffer)
 	if err = t.Execute(buffer, data); err != nil {
