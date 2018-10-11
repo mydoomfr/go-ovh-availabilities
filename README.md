@@ -34,9 +34,11 @@ $ vi config.json
 $ go-ovh-availabilities -c /path/to/config.json
 ```
 
+Well tested on : W10, OSX Mojave & Ubuntu 16.04
+
 ## Configuration
 
-- Refresh (mandatory) is the interval to wait before the next API request. (seconds)
+- Refresh (mandatory) is the interval to wait before the next API request. (seconds) Warning: Do not use low-value or you may be automatically banned.
 - Wanted.Name (optional) is your custom search name.
 - Wanted.Hardware (mandatory) is the "id" of the dedicated server. You can get it from the Kimsufi or Souyoustart website by inspecting the source code.
 - Wanted.Region (optional) refers to the geolocation.
@@ -47,7 +49,7 @@ $ go-ovh-availabilities -c /path/to/config.json
 ```json
 {
   "api": "https://www.ovh.com/engine/api/dedicated/server/availabilities?country=fr",
-  "refresh": 300,
+  "refresh": 1800,
   "wanted": [
     {
       "name": "My favorite KS-1",
